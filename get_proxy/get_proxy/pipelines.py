@@ -34,19 +34,19 @@ class MongoPipeline(object):
         self.coll = coll
         url = 'https://www.google.com.tw/'
         headers = {"User-Agent": "Mozilla/5.0"}
-        # print('total ip : ' + str(coll.count()))
-        # for x in coll.find():
-        #   try:
-        #     res = requests.get(url, proxies={x['scheme']:x['proxy']}, headers=headers, timeout=3)
-        #     if res.status_code == 200 :
-        #       print('pass : '+ x['proxy'])
-        #     else :
-        #       print('delete : '+ x['proxy'])
-        #       coll.delete_one(x)
-        #   except:
-        #     print('refuse : ' + x['proxy'])
-        #     coll.delete_one(x)
-        #     continue
+         print('total ip : ' + str(coll.count()))
+         for x in coll.find():
+           try:
+             res = requests.get(url, proxies={x['scheme']:x['proxy']}, headers=headers, timeout=3)
+             if res.status_code == 200 :
+               print('pass : '+ x['proxy'])
+             else :
+               print('delete : '+ x['proxy'])
+               coll.delete_one(x)
+           except:
+             print('refuse : ' + x['proxy'])
+             coll.delete_one(x)
+             continue
 
     def process_item(self, item, spider):
         self.insert_article(item)
