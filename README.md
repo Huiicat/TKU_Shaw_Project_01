@@ -20,4 +20,4 @@ scrapy crawl proxy_example<br>
 2. 至 http://www.us-proxy.org/ 抓取新IP
 3. 檢驗新IP是否有效，有效則新增至mongoDB
 
-**目前常駐約100個可用IP**
+**目前常駐約100個可用IP，一次執行平均 3 min，依IP數量而定**
